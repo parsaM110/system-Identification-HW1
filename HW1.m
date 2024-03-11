@@ -52,7 +52,7 @@ Y_avg = mean(Y_sorted, 2); % Take the mean along the rows (each column)
 
 % Plot the average of Y_sorted with respect to u
 figure;
-plot(X_sorted(:, 2), Y_avg, '.');
+plot(u(idx, :), Y_avg, '-');
 xlabel('u');
-ylabel('Average of Y_sorted');
-title('Average of Y_sorted vs. u');
+ylabel('Average of Y\_sorted');
+title('Plot of Average of Y\_sorted vs. u');
