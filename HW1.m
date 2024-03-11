@@ -38,7 +38,7 @@ end
 theta_hat_LS = inv(X' * X) * X' * Y_all;
 
  % Calculate Y_hat
- Y_hat = X .* theta_hat_LS' + N;
+ Y_hat = X .* theta_hat_LS';
 
 % Sort X
 [~, idx] = sort(X(:, 2)); % Sorting according to the second column (u)
