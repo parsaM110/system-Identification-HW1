@@ -47,9 +47,12 @@ X_sorted = X(idx, :);
 % Sort Y according to the indexes of sorted X
 Y_sorted = Y_hat(idx, :);
 
-% Plot Y with respect to u
+% Calculate the average of each column of Y_sorted
+Y_avg = mean(Y_sorted, 2); % Take the mean along the rows (each column)
+
+% Plot the average of Y_sorted with respect to u
 figure;
-plot(X_sorted(:, 2), Y_sorted, '.');
+plot(X_sorted(:, 2), Y_avg, '.');
 xlabel('u');
-ylabel('Y_hat');
-title('Y_hat vs. u');
+ylabel('Average of Y_sorted');
+title('Average of Y_sorted vs. u');
