@@ -38,18 +38,18 @@ end
 theta_hat_LS = inv(X' * X) * X' * Y_all;
 
  % Calculate Y_hat
- Y_hat = X .* theta_hat_LS';
+ Y_hat = X * theta_hat_LS;
 
 % Sort X
 [~, idx] = sort(X(:, 2)); % Sorting according to the second column (u)
 X_sorted = X(idx, :);
-
+ 
 % Sort Y according to the indexes of sorted X
 Y_sorted = Y_hat(idx, :);
-
+ 
 % Calculate the average of each column of Y_sorted
 Y_avg = mean(Y_sorted, 2); % Take the mean along the rows (each column)
-
+ 
 % Plot the average of Y_sorted with respect to u
 figure;
 plot(u(idx, :), Y_avg, '-');
