@@ -24,7 +24,7 @@ Y_all = zeros(100, 100);
 for i = 1:100
     % Generate noise N(mu, sigma)
     mu = zeros(100, 1);
-    sigma = sqrt(2) * ones(100, 1);
+    sigma =  ones(100, 1);
     N = mu + sigma .* randn(100, 1);
 
     % Calculate Y
@@ -50,9 +50,17 @@ Y_sorted = Y_hat(idx, :);
 % Calculate the average of each column of Y_sorted
 Y_avg = mean(Y_sorted, 2); % Take the mean along the rows (each column)
  
+% Calculate the variance along columns (variance of each row)
+variance_along_columns = var(Y_hat, 0, 2);
+
 % Plot the average of Y_sorted with respect to u
 figure;
 plot(u(idx, :), Y_avg, '-');
 xlabel('u');
 ylabel('Average of Y\_sorted');
 title('Plot of Average of Y\_sorted vs. u');
+hold on
+plot(u(idx, :), Y_avg + variance_along_columns , '-');
+plot(u(idx, :), Y_avg - variance_along_columns , '-');
+%scatter(u(idx, :),Y_sorted)
+errorbar(u(idx(1:10:end), :), Y_sorted(1:10), variance_along_columns(1:10), 'o-');
